@@ -11,14 +11,44 @@ namespace FortuneAI.WebSiteTag
 
         public static string ConvertChatGptContentToWebSiteTag(string chatGptContent)
         {
-            return $@"
-<!DOCTYPE html>
+            //まずは1ファイルで完結させたいのでcssを直接記載
+            return $@"<!DOCTYPE html>
 <html>
   <head>
+    <meta charset=""utf-8"">
+<style type=""text/css"">
+body {{
+  background-color: #f7f7f7; /* 薄いグレー */
+  font-family: 'Helvetica Neue', sans-serif; /* サンセリフ体 */
+  color: #333; /* 濃いグレー */
+  line-height: 1.5;
+}}
+
+/* 結果表示エリア */
+.result-area {{
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+}}
+
+.result-area h1 {{
+  font-size: 3rem;
+  margin: 0;
+  font-weight: bold;
+  margin-bottom: 20px;
+}}
+
+.result-area p {{
+  font-size: 1.5rem;
+  margin: 0;
+}}
+</style>
   </head>
   <body>
-    更新 : {DateTime.Today.ToString("yyyy/MM/dd HH:ss")}
-    {chatGptContent}
+    更新 : {DateTime.Now.ToString("yyyy/MM/dd HH:mm")}
+    <br />
+    {string.Join("<br />", chatGptContent.Split("\n\n"))}
   </body>
 </html>
 ";
