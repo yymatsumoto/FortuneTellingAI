@@ -3,14 +3,14 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
-namespace FortunTellingAI.Function
+namespace FortuneAI.Function
 {
     public class FortuneTelling
     {
         [FunctionName("FortuneTelling")]
-        public void Run([TimerTrigger("0 */1 * * * *", RunOnStartup = true)]TimerInfo myTimer, ILogger log)
+        public static async void Run([TimerTrigger("0 * */1 * * *", RunOnStartup = true)]TimerInfo myTimer, ILogger log)
         {
-            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+            var result = await new FortuneAI.ChatGpt.ChatGptApiService().GetFortuneTelling();
         }
     }
 }

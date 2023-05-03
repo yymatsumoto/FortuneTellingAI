@@ -15,7 +15,4 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ChatGPT\Entity\" />
-  </ItemGroup>
 </Project>
