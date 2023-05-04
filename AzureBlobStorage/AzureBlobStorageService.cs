@@ -40,7 +40,7 @@ namespace FortuneAI.AzureBlobStorage
 
             var text = await blockBlob.DownloadTextAsync();
             //厳密な判定ではないが、更新日時を使用してその日に更新済みかを判定する
-            return !text.Contains(DateTime.Today.ToString("yyyy/MM/dd"));
+            return !text.Contains(System.TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, System.TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time")).ToString("yyyy/MM/dd"));
         }
 
         public async void ReplaceFile(string content)
