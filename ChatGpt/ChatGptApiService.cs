@@ -16,7 +16,7 @@ namespace FortuneAI.ChatGpt
     {
         private string _url = "https://api.openai.com/v1/chat/completions";
 
-        private string _key = "";
+        private static string _key = System.Environment.GetEnvironmentVariable("OpenAIAccessKey", EnvironmentVariableTarget.Process);;
 
         public async Task<string> GetFortuneTelling()
         {

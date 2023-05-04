@@ -18,10 +18,10 @@ namespace FortuneAI.AzureBlobStorage
     {
         public async void ReplaceFile(string content)
         {
-            var accountName = "";
-            var accessKey = "";
-            var containerName = "";
-            var blobName = "";
+            var accountName = System.Environment.GetEnvironmentVariable("AccountName", EnvironmentVariableTarget.Process); ;
+            var accessKey = System.Environment.GetEnvironmentVariable("AzureBlobStorageAccessKey", EnvironmentVariableTarget.Process);
+            var containerName = System.Environment.GetEnvironmentVariable("ContainerName", EnvironmentVariableTarget.Process);
+            var blobName = System.Environment.GetEnvironmentVariable("BlobName", EnvironmentVariableTarget.Process);
 
             var credential = new StorageCredentials(accountName, accessKey);
             var storageAccount = new CloudStorageAccount(credential, true);
