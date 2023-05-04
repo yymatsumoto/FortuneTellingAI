@@ -23,7 +23,7 @@ namespace FortuneAI.ChatGpt
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _key);
 
-            var message = $@"{DateTime.Today.ToString("yyyy/MM/dd")}の占いを作成してください。星座ごとに、12個の結果を作成してください。1つの星座は15文字程度で作成してください。結果以外の文章は生成しないでください。";
+            var message = $@"{System.TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, System.TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time")).ToString("yyyy/MM/dd")}の占いを作成してください。星座ごとに、12個の結果を作成してください。1つの星座は15文字程度で作成してください。結果以外の文章は生成しないでください。";
             var jsonStr = JsonSerializer.Serialize(new Dictionary<string, object>()
             {
                 { "model", "gpt-3.5-turbo" },
