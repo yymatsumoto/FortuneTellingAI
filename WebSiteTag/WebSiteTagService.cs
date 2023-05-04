@@ -48,7 +48,7 @@ body {{
   <body>
     {string.Join("<br />", chatGptContent.Split("\n\n"))}
     <br />
-    更新 : {System.TimeZoneInfo.ConvertTimeFromUtc(DateTime.Now, System.TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time")).ToString("yyyy/MM/dd HH:mm")}
+    更新 : {System.TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, System.TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time")).ToString("yyyy/MM/dd HH:mm")}
   </body>
 </html>
 ";
