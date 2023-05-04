@@ -11,7 +11,7 @@ namespace FortuneAI.WebSiteTag
 
         public static string ConvertChatGptContentToWebSiteTag(string chatGptContent)
         {
-            //まずは1ファイルで完結させたいのでcssを直接記載
+             //まずは1ファイルで完結させたいのでcssを直接記載
             return $@"<!DOCTYPE html>
 <html>
   <head>
@@ -46,9 +46,9 @@ body {{
 </style>
   </head>
   <body>
-    更新 : {DateTime.Now.ToString("yyyy/MM/dd HH:mm")}
-    <br />
     {string.Join("<br />", chatGptContent.Split("\n\n"))}
+    <br />
+    更新 : {System.TimeZoneInfo.ConvertTimeFromUtc(DateTime.Now, System.TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time")).ToString("yyyy/MM/dd HH:mm")}
   </body>
 </html>
 ";
