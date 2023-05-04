@@ -46,9 +46,19 @@ body {{
 </style>
   </head>
   <body>
-    {string.Join("<br />", chatGptContent.Split("\n\n"))}
-    <br />
-    更新 : {System.TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, System.TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time")).ToString("yyyy/MM/dd HH:mm")}
+    <div class='result-area'>
+      <h1>AI占い 今日の運勢</h1>
+      {string.Join("<br />", chatGptContent.Split("\n\n").Select(x => $@"<p>{x}</p>"))}
+      <p></p><br />
+      <p></p><br />
+      <p></p><br />
+      <p></p><br />
+      <p>更新 : {System.TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, System.TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time")).ToString("yyyy/MM/dd HH:mm")}</p><br />
+      <p>このページでは、ChatGPTで生成した占いを日次で更新しています。</p><br />
+      <p>ChatGPTにAIが生成した占いについての注意点を聞いたところ「AIによる占いはあくまでも予測であり、信じ過ぎないように注意しましょう。」とのことでした。</p><br />
+      <p></p><br />
+      <p><a href='https://twitter.com/ma_ttsu_n'>作成者</a></p><br />
+    </div>
   </body>
 </html>
 ";
