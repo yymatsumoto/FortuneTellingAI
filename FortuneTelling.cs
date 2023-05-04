@@ -10,7 +10,7 @@ namespace FortuneAI.Function
     public class FortuneTelling
     {
         [FunctionName("FortuneTelling")]
-        public static void Run([TimerTrigger("0 * */1 * * *", RunOnStartup = true)]TimerInfo myTimer, ILogger log)
+        public static void Run([TimerTrigger("0 */1 * * * *", RunOnStartup = true)]TimerInfo myTimer, ILogger log)
         {
             var chatGptContent = new FortuneAI.ChatGpt.ChatGptApiService().GetFortuneTelling();
             new AzureBlobStorageService().ReplaceFile(WebSiteTagService.ConvertChatGptContentToWebSiteTag(chatGptContent.Result));
